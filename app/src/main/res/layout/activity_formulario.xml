@@ -1,16 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.tis.lumera.FormularioActivity">
+    tools:context="com.tis.lumera.FormularioActivity"
+    >
 
     <TextView
+        android:id="@+id/lampada1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="Lâmpada 1"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <Spinner
+        android:layout_toRightOf="@id/lampada1"
+        android:id="@+id/spinnerLampada1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp">
+    </Spinner>
+
+    <TextView
+        android:layout_below="@id/spinnerLampada1"
+        android:id="@+id/potenciaLampada1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Potência: "
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_below="@+id/potenciaLampada1"
+        android:id="@+id/lumensLampada1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lumens: "
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_below="@+id/lumensLampada1"
+        android:id="@+id/qtdLampada1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Qtd Lâmpadas: "
+        android:textSize="20sp"/>
+
+    <EditText
+        android:layout_below="@+id/lumensLampada1"
+        android:layout_toRightOf="@+id/qtdLampada1"
+        android:id="@+id/textoQtdLampada1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_below="@+id/qtdLampada1"
+        android:layout_marginTop="10dp"
+        android:id="@+id/lampada2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lâmpada 2"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+     <TextView
+        android:layout_below="@id/lampada2"
+        android:id="@+id/potenciaLampada2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Potência: "
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_below="@+id/potenciaLampada2"
+        android:id="@+id/lumensLampada2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lumens: "
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_below="@+id/lumensLampada2"
+        android:id="@+id/precoLampada2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Preço: "
+        android:textSize="20sp"/>
+
+    <EditText
+        android:layout_below="@+id/lumensLampada2"
+        android:layout_toRightOf="@+id/precoLampada2"
+        android:id="@+id/textoPreco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_below="@+id/precoLampada2"
+        android:layout_marginTop="10dp"
+        android:id="@+id/dadosGerais"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dados"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_below="@+id/dadosGerais"
+        android:id="@+id/lumensAmbiente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lumens do Ambiente: "
+        android:textSize="20sp"/>
+
+    <EditText
+        android:layout_below="@+id/dadosGerais"
+        android:layout_toRightOf="@+id/lumensAmbiente"
+        android:id="@+id/textoLumensAmbiente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_below="@+id/lumensAmbiente"
+        android:id="@+id/valorKwH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Valor do Kw/H: "
+        android:textSize="20sp"/>
+
+    <EditText
+        android:layout_below="@+id/lumensAmbiente"
+        android:layout_toRightOf="@+id/valorKwH"
+        android:id="@+id/textoValorKwH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_below="@+id/textoValorKwH"
+        android:id="@+id/horas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Horas Ligadas: "
+        android:textSize="20sp"/>
+
+    <EditText
+        android:layout_below="@+id/textoValorKwH"
+        android:layout_toRightOf="@+id/horas"
+        android:id="@+id/textoHoras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_below="@+id/horas"
+        android:id="@+id/dias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Dias Ligadas: "
+        android:textSize="20sp"/>
+
+    <EditText
+        android:layout_below="@+id/horas"
+        android:layout_toRightOf="@+id/dias"
+        android:id="@+id/textoHoras"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </RelativeLayout>
