@@ -185,7 +185,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/textoValorKwH"
-            android:text="Total Horas Ligadas: "
+            android:text="Horas/dia ligada:"
             android:textSize="20sp" />
 
         <EditText
@@ -200,7 +200,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/horas"
-            android:text="Total Dias Ligadas: "
+            android:text="Dias Ligadas: "
             android:textSize="20sp" />
 
         <EditText

@@ -20,6 +20,10 @@ public class Lampada {
         return String.valueOf(potencia);
     }
 
+    public int getPotencia() {
+        return potencia;
+    }
+
     public int getLumens() {
         return lumen;
     }
