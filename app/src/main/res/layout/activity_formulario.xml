@@ -1,183 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.tis.lumera.FormularioActivity"
-    >
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/lampada1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lâmpada 1"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.tis.lumera.FormularioActivity">
 
-    <Spinner
-        android:id="@+id/spinnerLampada1"
-        android:layout_toRightOf="@id/lampada1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp">
-    </Spinner>
+        <TextView
+            android:id="@+id/lampada1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lâmpada 1"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/potenciaLampada1"
-        android:layout_below="@id/spinnerLampada1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Potência: "
-        android:textSize="20sp"/>
+        <Spinner
+            android:id="@+id/spinnerLampada1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/lampada1"
+            android:textSize="20sp"></Spinner>
 
-    <TextView
-        android:id="@+id/lumensLampada1"
-        android:layout_below="@+id/potenciaLampada1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lumens: "
-        android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/potenciaLampada1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spinnerLampada1"
+            android:text="Potência: "
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/qtdLampada1"
-        android:layout_below="@+id/lumensLampada1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Qtd Lâmpadas: "
-        android:textSize="20sp"/>
+        <Spinner
+            android:id="@+id/spinnerPotenciaLampada1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spinnerLampada1"
+            android:layout_toRightOf="@id/potenciaLampada1"
+            android:textSize="20sp"></Spinner>
 
-    <EditText
-        android:id="@+id/textoQtdLampada1"
-        android:layout_below="@+id/lumensLampada1"
-        android:layout_toRightOf="@+id/qtdLampada1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/lumensLampada1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinnerPotenciaLampada1"
+            android:text="Lumens: "
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/lampada2"
-        android:layout_below="@+id/qtdLampada1"
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lâmpada 2"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
+        <EditText
+            android:id="@+id/textoLumensLampada1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinnerPotenciaLampada1"
+            android:layout_toRightOf="@+id/lumensLampada1" />
 
-    <Spinner
-        android:id="@+id/spinnerLampada2"
-        android:layout_below="@+id/qtdLampada1"
-        android:layout_marginTop="20dp"
-        android:layout_toRightOf="@id/lampada2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp">
-    </Spinner>
+        <TextView
+            android:id="@+id/qtdLampada1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lumensLampada1"
+            android:text="Qtd Lâmpadas: "
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/potenciaLampada2"
-        android:layout_below="@+id/spinnerLampada2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Potência: "
-        android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/textoQtdLampada1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lumensLampada1"
+            android:layout_toRightOf="@+id/qtdLampada1" />
 
-    <TextView
-        android:id="@+id/lumensLampada2"
-        android:layout_below="@+id/potenciaLampada2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lumens: "
-        android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/lampada2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/qtdLampada1"
+            android:layout_marginTop="20dp"
+            android:text="Lâmpada 2"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/precoLampada2"
-        android:layout_below="@+id/lumensLampada2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Preço: "
-        android:textSize="20sp"/>
+        <Spinner
+            android:id="@+id/spinnerLampada2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/qtdLampada1"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@id/lampada2"
+            android:textSize="20sp"></Spinner>
 
-    <EditText
-        android:id="@+id/textoPreco"
-        android:layout_below="@+id/lumensLampada2"
-        android:layout_toRightOf="@+id/precoLampada2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/potenciaLampada2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinnerLampada2"
+            android:text="Potência: "
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/dadosGerais"
-        android:layout_below="@+id/precoLampada2"
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dados"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
+        <Spinner
+            android:id="@+id/spinnerPotenciaLampada2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spinnerLampada2"
+            android:layout_toRightOf="@id/potenciaLampada1"
+            android:textSize="20sp"></Spinner>
 
-    <TextView
-        android:id="@+id/lumensAmbiente"
-        android:layout_below="@+id/dadosGerais"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Lumens do Ambiente: "
-        android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/lumensLampada2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinnerPotenciaLampada2"
+            android:text="Lumens: "
+            android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/textoLumensAmbiente"
-        android:layout_below="@+id/dadosGerais"
-        android:layout_toRightOf="@+id/lumensAmbiente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/textoLumensLampada2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinnerPotenciaLampada2"
+            android:layout_toRightOf="@+id/lumensLampada2" />
 
-    <TextView
-        android:id="@+id/valorKwH"
-        android:layout_below="@+id/lumensAmbiente"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Valor do Kw/H: "
-        android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/precoLampada2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lumensLampada2"
+            android:text="Preço: "
+            android:textSize="20sp" />
 
-    <EditText
-        android:id="@+id/textoValorKwH"
-        android:layout_below="@+id/lumensAmbiente"
-        android:layout_toRightOf="@+id/valorKwH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/textoPreco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lumensLampada2"
+            android:layout_toRightOf="@+id/precoLampada2" />
 
-    <TextView
-        android:id="@+id/horas"
-        android:layout_below="@+id/textoValorKwH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total Horas Ligadas: "
-        android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/dadosGerais"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/precoLampada2"
+            android:layout_marginTop="20dp"
+            android:text="Dados"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/textoHoras"
-        android:layout_below="@+id/textoValorKwH"
-        android:layout_toRightOf="@+id/horas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/lumensAmbiente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dadosGerais"
+            android:text="Lumens do Ambiente: "
+            android:textSize="20sp" />
 
-    <TextView
-        android:id="@+id/dias"
-        android:layout_below="@+id/horas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Total Dias Ligadas: "
-        android:textSize="20sp"/>
+        <EditText
+            android:id="@+id/textoLumensAmbiente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dadosGerais"
+            android:layout_toRightOf="@+id/lumensAmbiente" />
 
-    <EditText
-        android:id="@+id/textoDias"
-        android:layout_below="@+id/horas"
-        android:layout_toRightOf="@+id/dias"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/valorKwH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lumensAmbiente"
+            android:text="Valor do Kw/H: "
+            android:textSize="20sp" />
 
-</RelativeLayout>
+        <EditText
+            android:id="@+id/textoValorKwH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lumensAmbiente"
+            android:layout_toRightOf="@+id/valorKwH" />
+
+        <TextView
+            android:id="@+id/horas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textoValorKwH"
+            android:text="Total Horas Ligadas: "
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/textoHoras"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textoValorKwH"
+            android:layout_toRightOf="@+id/horas" />
+
+        <TextView
+            android:id="@+id/dias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/horas"
+            android:text="Total Dias Ligadas: "
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/textoDias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/horas"
+            android:layout_toRightOf="@+id/dias" />
+        <Button
+            android:id="@+id/botaoCalcular"
+            android:text="Calcular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:layout_below="@id/textoDias"
+            android:layout_centerInParent="true"
+            />
+
+    </RelativeLayout>
+</ScrollView>
