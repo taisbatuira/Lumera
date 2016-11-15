@@ -19,7 +19,7 @@ import java.util.List;
 public class FormularioActivity extends AppCompatActivity {
 
     private BDLampada banco;
-    private Lampada potenciaDaLampada;
+    private Lampada[] resultados = new Lampada[2];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +28,8 @@ public class FormularioActivity extends AppCompatActivity {
 
         banco = new BDLampada(this);
 
-        populaSpinner(R.id.spinnerLampada1, R.id.spinnerPotenciaLampada1,R.id.textoLumensLampada1);
-        populaSpinner(R.id.spinnerLampada2, R.id.spinnerPotenciaLampada2,R.id.textoLumensLampada2);
+        populaSpinner(R.id.spinnerLampada1, R.id.spinnerPotenciaLampada1,R.id.textoLumensLampada1, 0);
+        populaSpinner(R.id.spinnerLampada2, R.id.spinnerPotenciaLampada2,R.id.textoLumensLampada2, 1);
 
         Button botao = (Button) findViewById(R.id.botaoCalcular);
         botao.setOnClickListener(new View.OnClickListener() {
@@ -37,9 +37,17 @@ public class FormularioActivity extends AppCompatActivity {
             public void onClick(View v) {
                 double horas = extraiConteudoDoCampo((EditText)findViewById(R.id.textoHoras));
                 double dias = extraiConteudoDoCampo((EditText)findViewById(R.id.textoDias));
-                if(potenciaDaLampada != null) {
-                    double resultado = Calculadora.consumo(horas,dias,potenciaDaLampada.getPotencia());
-                    Log.i("blah",resultado+"");
+                double valorKwH = extraiConteudoDoCampo((EditText)findViewById(R.id.textoValorKwH));
+                Lampada potenciaDaLampada1 = resultados[0];
+                Lampada potenciaDaLampada2 = resultados[1];
+                if(potenciaDaLampada1 != null && potenciaDaLampada2 != null) {
+                    double consumo1 = Calculadora.consumo(horas,dias,potenciaDaLampada1.getPotencia());
+                    double consumo2 = Calculadora.consumo(horas,dias,potenciaDaLampada2.getPotencia());
+                    double valor1 = Calculadora.valorConsumo(consumo1,valorKwH);
+                    double valor2 = Calculadora.valorConsumo(consumo2,valorKwH);
+                    double reducao = Calculadora.reducao(valor1,valor2);
+                    Log.i("blah",reducao+"");
+
                 }
 
 
@@ -53,7 +61,7 @@ public class FormularioActivity extends AppCompatActivity {
         return Double.parseDouble(campo.getText().toString());
     }
 
-    private void populaSpinner(int idSpinnerLampada, final int idSpinnerPotenciaLampada, final int idTextLumenLampada) {
+    private void populaSpinner(int idSpinnerLampada, final int idSpinnerPotenciaLampada, final int idTextLumenLampada, final int i) {
         final String[] lampadas = {"- Tipo de Lâmpada -", "Incandescente", "LED", "Fluorescente", "Tubo Fluorescente", "Iodeto Metálico"};
         Spinner spinnerLampada = (Spinner) findViewById(idSpinnerLampada);
         ArrayAdapter<String> adapterSpinner = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lampadas);
@@ -70,9 +78,10 @@ public class FormularioActivity extends AppCompatActivity {
                     spinnerPotenciaLampada.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            potenciaDaLampada = (Lampada) parent.getItemAtPosition(position);
+                            Lampada potenciaDaLampada = (Lampada) parent.getItemAtPosition(position);
                             TextView lumensLampada = (TextView) findViewById(idTextLumenLampada);
                             lumensLampada.setText(String.valueOf(potenciaDaLampada.getLumens()));
+                            resultados[i] = potenciaDaLampada;
                         }
 
                         @Override
