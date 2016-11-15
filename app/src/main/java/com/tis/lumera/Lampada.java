@@ -19,4 +19,8 @@ public class Lampada {
     public String toString() {
         return String.valueOf(potencia);
     }
+
+    public int getLumens() {
+        return lumen;
+    }
 }

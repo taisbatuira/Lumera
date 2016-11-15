@@ -126,7 +126,6 @@ public class BDLampada extends SQLiteOpenHelper{
         while (cursor.moveToNext()){
             int potencia = cursor.getInt(cursor.getColumnIndex("POTENCIA"));
             int lumen = cursor.getInt(cursor.getColumnIndex("LUMEN"));
-            Log.i("BLA", potencia + "");
             Lampada lampada = new Lampada(nomeDaLampada,potencia,lumen);
             lampadas.add(lampada);
         }
