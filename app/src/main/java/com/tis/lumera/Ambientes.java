@@ -9,7 +9,7 @@ public class Ambientes {
     private ArrayList<Ambiente> listaDeAmbientes = new ArrayList<Ambiente>();
 
     public Ambientes() {
-        listaDeAmbientes.add(new Ambiente("Selecione um ambiente aproximado",0));
+        listaDeAmbientes.add(new Ambiente("Selecione um ambiente",0));
         listaDeAmbientes.add(new Ambiente("Áreas públicas com arredores escuros",35));
         listaDeAmbientes.add(new Ambiente("Orientação simples para permanência curta",75));
         listaDeAmbientes.add(new Ambiente("Depósitos",150));
