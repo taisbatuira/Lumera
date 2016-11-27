@@ -50,12 +50,12 @@ public class FormularioActivity extends AppCompatActivity {
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double horas = extraiConteudoDoCampoDouble((EditText)findViewById(R.id.textoHoras));
-                double dias = extraiConteudoDoCampoDouble((EditText)findViewById(R.id.textoDias));
-                double valorKwH = extraiConteudoDoCampoDouble((EditText)findViewById(R.id.textoValorKwH));
-                int tamanhoAmbiente = extraiConteudoDoCampoInt((EditText)findViewById(R.id.textoTamanhoAmbiente));
-                double precoInstalacao = extraiConteudoDoCampoDouble((EditText)findViewById(R.id.textoPreco));
-                int qtdLampada1 = extraiConteudoDoCampoInt((EditText)findViewById(R.id.textoQtdLampada1));
+                int horas = extraiConteudoDoCampoInt(R.id.textoHoras);
+                int dias = extraiConteudoDoCampoInt(R.id.textoDias);
+                double valorKwH = extraiConteudoDoCampoDouble(R.id.textoValorKwH);
+                int tamanhoAmbiente = extraiConteudoDoCampoInt(R.id.textoTamanhoAmbiente);
+                double precoInstalacao = extraiConteudoDoCampoDouble(R.id.textoPreco);
+                int qtdLampada1 = extraiConteudoDoCampoInt(R.id.textoQtdLampada1);
 
                 Lampada potenciaDaLampada1 = resultados[0];
                 Lampada potenciaDaLampada2 = resultados[1];
@@ -64,7 +64,7 @@ public class FormularioActivity extends AppCompatActivity {
                     double consumo2 = Calculadora.consumo(horas,dias,potenciaDaLampada2.getPotencia());
                     double valor1 = Calculadora.valorConsumo(consumo1,valorKwH);
                     double valor2 = Calculadora.valorConsumo(consumo2,valorKwH);
-                    double reducao = Calculadora.reducao(valor1,valor2);
+                    int reducao = Calculadora.reducao(valor1,valor2);
 
                     double lumensAmbiente = tamanhoAmbiente * luxEquivalente;
                     int qtdLampada2 = Calculadora.qtdDeLampadas(lumensAmbiente, potenciaDaLampada2.getLumens());
@@ -87,11 +87,13 @@ public class FormularioActivity extends AppCompatActivity {
 
     }
 
-    private double extraiConteudoDoCampoDouble(EditText campo){
+    private double extraiConteudoDoCampoDouble(int idDoCampo){
+        EditText campo = (EditText) findViewById(idDoCampo);
         return Double.parseDouble(campo.getText().toString());
     }
 
-    public int extraiConteudoDoCampoInt(EditText campo) {
+    public int extraiConteudoDoCampoInt(int idDoCampo) {
+        EditText campo = (EditText) findViewById(idDoCampo);
         return Integer.parseInt(campo.getText().toString());
     }
 

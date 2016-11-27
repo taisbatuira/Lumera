@@ -22,10 +22,10 @@ public class Relatorio implements Serializable{
     public int luxAmbiente;
     public int tamanhoAmbiente;
     public double valorKwH;
-    public double horasLigada;
-    public double diasLigada;
+    public int horasLigada;
+    public int diasLigada;
 
-    public double reducao;
+    public int reducao;
     public int qtdLampadas2;
     public double valorInstalacaoLampadas2;
 
@@ -52,7 +52,7 @@ public class Relatorio implements Serializable{
         return this;
     }
 
-    public Relatorio comDadosGerais(int luxAmbiente, int tamanhoAmbiente, double valorKwH, double horasLigada, double diasLigada) {
+    public Relatorio comDadosGerais(int luxAmbiente, int tamanhoAmbiente, double valorKwH, int horasLigada, int diasLigada) {
         this.luxAmbiente = luxAmbiente;
         this.tamanhoAmbiente = tamanhoAmbiente;
         this.valorKwH = valorKwH;
@@ -62,7 +62,7 @@ public class Relatorio implements Serializable{
         return this;
     }
 
-    public Relatorio comCalculos(double reducao, int qtdLampadas2, double valorInstalacaoLampadas2) {
+    public Relatorio comCalculos(int reducao, int qtdLampadas2, double valorInstalacaoLampadas2) {
         this.reducao = reducao;
         this.qtdLampadas2 = qtdLampadas2;
         this.valorInstalacaoLampadas2 = valorInstalacaoLampadas2;

@@ -13,8 +13,8 @@ public class Calculadora {
         return consumo*valorKwH;
     }
 
-    public static double reducao(double valorConsumo1, double valorConsumo2){
-        return (valorConsumo2/valorConsumo1)*100;
+    public static int reducao(double valorConsumo1, double valorConsumo2){
+        return (int)((valorConsumo2/valorConsumo1)*100);
     }
 
     public static int qtdDeLampadas(double lumensAmbiente, int lumensLampada2) {
