@@ -155,21 +155,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/dadosGerais"
-            android:text="Lumens do Ambiente: "
+            android:text="Ambiente: "
             android:textSize="20sp" />
 
-        <EditText
-            android:id="@+id/textoLumensAmbiente"
+        <Spinner
+            android:id="@+id/spinnerLuxAmbiente"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/dadosGerais"
             android:layout_toRightOf="@+id/lumensAmbiente" />
 
         <TextView
+            android:id="@+id/tamanhoAmbiente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinnerLuxAmbiente"
+            android:text="Tamanho do Ambiente (m²)"
+            android:textSize="20sp"
+            />
+
+        <EditText
+            android:id="@+id/textoTamanhoAmbiente"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinnerLuxAmbiente"
+            android:layout_toRightOf="@+id/tamanhoAmbiente"
+            />
+
+        <TextView
             android:id="@+id/valorKwH"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/lumensAmbiente"
+            android:layout_below="@+id/tamanhoAmbiente"
             android:text="Valor do Kw/H: "
             android:textSize="20sp" />
 
@@ -177,7 +194,7 @@
             android:id="@+id/textoValorKwH"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/lumensAmbiente"
+            android:layout_below="@+id/tamanhoAmbiente"
             android:layout_toRightOf="@+id/valorKwH" />
 
         <TextView

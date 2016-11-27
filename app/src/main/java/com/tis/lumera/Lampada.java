@@ -27,4 +27,8 @@ public class Lampada {
     public int getLumens() {
         return lumen;
     }
+
+    public String getNomeDaLampada() {
+        return nomeDaLampada;
+    }
 }

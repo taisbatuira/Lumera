@@ -1,11 +1,9 @@
 package com.tis.lumera;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,13 +11,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FormularioActivity extends AppCompatActivity {
 
     private BDLampada banco;
     private Lampada[] resultados = new Lampada[2];
+    private int luxEquivalente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +29,34 @@ public class FormularioActivity extends AppCompatActivity {
         populaSpinner(R.id.spinnerLampada1, R.id.spinnerPotenciaLampada1,R.id.textoLumensLampada1, 0);
         populaSpinner(R.id.spinnerLampada2, R.id.spinnerPotenciaLampada2,R.id.textoLumensLampada2, 1);
 
+        Spinner spinnerAmbiente = (Spinner) findViewById(R.id.spinnerLuxAmbiente);
+        final Ambientes ambientes = new Ambientes();
+        ArrayAdapter<Ambiente> adapterSpinner = new ArrayAdapter<Ambiente>(this, android.R.layout.simple_list_item_1, ambientes.getListaDeAmbientes());
+        spinnerAmbiente.setAdapter(adapterSpinner);
+        spinnerAmbiente.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                 luxEquivalente = ambientes.getLuxAmbiente(position);
+                //falta mostrar no relatorio como total de lux indicado
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         Button botao = (Button) findViewById(R.id.botaoCalcular);
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double horas = extraiConteudoDoCampo((EditText)findViewById(R.id.textoHoras));
-                double dias = extraiConteudoDoCampo((EditText)findViewById(R.id.textoDias));
-                double valorKwH = extraiConteudoDoCampo((EditText)findViewById(R.id.textoValorKwH));
+                double horas = extraiConteudoDoCampoDouble((EditText)findViewById(R.id.textoHoras));
+                double dias = extraiConteudoDoCampoDouble((EditText)findViewById(R.id.textoDias));
+                double valorKwH = extraiConteudoDoCampoDouble((EditText)findViewById(R.id.textoValorKwH));
+                int tamanhoAmbiente = extraiConteudoDoCampoInt((EditText)findViewById(R.id.textoTamanhoAmbiente));
+                double precoInstalacao = extraiConteudoDoCampoDouble((EditText)findViewById(R.id.textoPreco));
+                int qtdLampada1 = extraiConteudoDoCampoInt((EditText)findViewById(R.id.textoQtdLampada1));
+
                 Lampada potenciaDaLampada1 = resultados[0];
                 Lampada potenciaDaLampada2 = resultados[1];
                 if(potenciaDaLampada1 != null && potenciaDaLampada2 != null) {
@@ -46,19 +65,34 @@ public class FormularioActivity extends AppCompatActivity {
                     double valor1 = Calculadora.valorConsumo(consumo1,valorKwH);
                     double valor2 = Calculadora.valorConsumo(consumo2,valorKwH);
                     double reducao = Calculadora.reducao(valor1,valor2);
-                    Log.i("blah",reducao+"");
 
+                    double lumensAmbiente = tamanhoAmbiente * luxEquivalente;
+                    int qtdLampada2 = Calculadora.qtdDeLampadas(lumensAmbiente, potenciaDaLampada2.getLumens());
+                    double valorInstalacao = precoInstalacao * qtdLampada2;
+
+                    //interface fluente - monta o relatorio usando metodos alinhados
+                    Relatorio relatorio = Relatorio.novo()
+                            .comLampada1(potenciaDaLampada1.getNomeDaLampada(), potenciaDaLampada1.getPotencia(), potenciaDaLampada1.getLumens(), qtdLampada1)
+                            .comLampada2(potenciaDaLampada2.getNomeDaLampada(), potenciaDaLampada2.getPotencia(), potenciaDaLampada2.getLumens(), precoInstalacao)
+                            .comDadosGerais(luxEquivalente, tamanhoAmbiente, valorKwH, horas, dias)
+                            .comCalculos(reducao, qtdLampada2, valorInstalacao);
+
+                    Intent irParaRelatorio = new Intent(FormularioActivity.this, RelatorioActivity.class);
+                    irParaRelatorio.putExtra("DADOS_RELATORIO", relatorio);
+                    startActivity(irParaRelatorio);
                 }
-
-
             }
         });
 
 
     }
 
-    private double extraiConteudoDoCampo (EditText campo){
+    private double extraiConteudoDoCampoDouble(EditText campo){
         return Double.parseDouble(campo.getText().toString());
+    }
+
+    public int extraiConteudoDoCampoInt(EditText campo) {
+        return Integer.parseInt(campo.getText().toString());
     }
 
     private void populaSpinner(int idSpinnerLampada, final int idSpinnerPotenciaLampada, final int idTextLumenLampada, final int i) {
