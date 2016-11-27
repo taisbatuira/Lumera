@@ -1,7 +1,10 @@
 package com.tis.lumera;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 public class RelatorioActivity extends AppCompatActivity {
@@ -33,6 +36,20 @@ public class RelatorioActivity extends AppCompatActivity {
         String textoDoCampo = "Quantidade de Lampadas "+relatorio.nomeLampada2+": "+relatorio.qtdLampadas2;
         populaString(R.id.relatorioTextoQtdLampada2, textoDoCampo);
         populaDouble(R.id.relatorioTextoCustoInstalacao, relatorio.valorInstalacaoLampadas2);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_relatorio, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.menuRelatorioEnviarPorEmail) {
+            new SalvaRelatorio().salva(this, findViewById(android.R.id.content));
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void populaString(int idDoCampo, String texto) {
